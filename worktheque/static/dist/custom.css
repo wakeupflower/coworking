@@ -1,0 +1,13 @@
+html {
+    scroll-behavior: smooth;
+  }
+
+.swiper-container {
+width: 100%;
+height: 500px;
+}
+.swiper-slide {
+display: flex;
+justify-content: center;
+align-items: center;
+}

@@ -1,0 +1,80 @@
+{% extends 'wrapper.html' %}
+
+{% block title %}Workthèque - Coworking Space{% endblock %}
+
+{% block content %}
+
+<section class="py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Breadcrumb -->
+      <nav class="text-gray-600 mb-4" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1">
+          <li>
+            <a href="/" class="text-blue-600 hover:underline">Accueil</a>
+          </li>
+          <li>
+            <span class="text-gray-500 mx-2">/</span>
+          </li>
+          <li class="text-gray-700">Mes Réservations</li>
+        </ol>
+      </nav>
+  
+      <!-- Page Title -->
+      <h1 class="text-3xl font-bold text-gray-800 mb-6">Mes Réservations</h1>
+  
+      <!-- Reservation Table -->
+      <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
+        <table class="w-full table-auto border-collapse">
+          <thead class="bg-blue-600 text-white">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-medium">Date</th>
+              <th class="px-6 py-3 text-left text-sm font-medium">Heure</th>
+              <th class="px-6 py-3 text-left text-sm font-medium">Salle</th>
+              <th class="px-6 py-3 text-left text-sm font-medium">Statut</th>
+              <th class="px-6 py-3 text-left text-sm font-medium">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <!-- Example Reservation -->
+            <tr>
+              <td class="px-6 py-4 text-gray-700">2024-11-18</td>
+              <td class="px-6 py-4 text-gray-700">10:00 - 12:00</td>
+              <td class="px-6 py-4 text-gray-700">Salle A</td>
+              <td class="px-6 py-4">
+                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Confirmé</span>
+              </td>
+              <td class="px-6 py-4">
+                <a href="/detailreservation/" class="text-blue-600 hover:underline">Voir les détails</a>
+              </td>
+            </tr>
+  
+            <!-- Add more rows dynamically -->
+            <tr>
+              <td class="px-6 py-4 text-gray-700">2024-11-20</td>
+              <td class="px-6 py-4 text-gray-700">14:00 - 16:00</td>
+              <td class="px-6 py-4 text-gray-700">Salle B</td>
+              <td class="px-6 py-4">
+                <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">En attente</span>
+              </td>
+              <td class="px-6 py-4">
+                <a href="#" class="text-blue-600 hover:underline">Modifier</a>
+              </td>
+            </tr>
+  
+            <tr>
+              <td class="px-6 py-4 text-gray-700">2024-11-25</td>
+              <td class="px-6 py-4 text-gray-700">09:00 - 11:00</td>
+              <td class="px-6 py-4 text-gray-700">Salle C</td>
+              <td class="px-6 py-4">
+                <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">Annulé</span>
+              </td>
+              <td class="px-6 py-4">
+                <a href="#" class="text-blue-600 hover:underline">Replanifier</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  {% endblock %}

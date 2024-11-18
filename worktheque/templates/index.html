@@ -1,0 +1,237 @@
+
+  {% extends 'wrapper.html' %}
+
+  {% block title %}Workthèque - Coworking Space{% endblock %}
+  
+  {% block content %}
+
+  {% load static %}
+  
+  <!-- Hero Slider -->
+  <section class="relative bg-primary">
+    <div class="swiper-container w-full h-64">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="h-[500px] bg-cover bg-center text-blue flex items-center justify-center w-full" style="background-image: url('{% static 'image-cover.jpg' %}');">
+            <div>
+              <h1 class="text-4xl font-bold px-4 py-2 bg-white bg-opacity-50">Bienvenue à Workthèque</h1>
+              <a href="/inscription/" class=" bg-alert text-white py-2 px-4 rounded hover:bg-blue-600">
+                <button class="mt-6 text-white px-4 py-2">Devenir membre</button>
+            </a>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="h-[500px] bg-cover bg-center text-white flex items-center justify-center w-full" style="background-image: url('{% static 'image2.jpg' %}');">
+            <h1 class="text-4xl font-bold px-4 py-2 bg-black bg-opacity-50">Travailler, Créer, Connecter</h1>
+          </div>
+          
+        </div>
+      </div>
+    
+         <!-- Add Pagination if necessary -->
+      <div class="swiper-pagination"></div>
+      <!-- Add Navigation buttons -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+
+    </div>
+  </section>
+
+
+
+
+
+<section class=" bg-gray-50 py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">Pourquoi choisir un espace de coworking ?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Flexibility and Cost Reduction -->
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <div class="flex items-center space-x-4">
+          <div class="flex-shrink-0">
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800">Flexibilité et réduction des coûts</h3>
+        </div>
+        <p class="mt-4 text-gray-600">
+          Location à l’heure, à la journée ou au mois, avec des frais fixes réduits. Services inclus : Wi-Fi, imprimantes, cuisines et bien plus.
+        </p>
+      </div>
+
+      <!-- Networking -->
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <div class="flex items-center space-x-4">
+          <h3 class="text-xl font-semibold text-gray-800">Un réseau professionnel dynamique</h3>
+        </div>
+        <p class="mt-4 text-gray-600">
+          Des freelances, start-ups, créatifs réunis en un lieu. Favorise collaborations, échanges et partenariats inattendus.
+        </p>
+      </div>
+
+      <!-- Productivity -->
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <div class="flex items-center space-x-4">
+          <h3 class="text-xl font-semibold text-gray-800">Une meilleure productivité</h3>
+        </div>
+        <p class="mt-4 text-gray-600">
+          Une ambiance professionnelle et des espaces calmes optimisés pour se concentrer et booster votre créativité.
+        </p>
+      </div>
+
+      <!-- Community -->
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <div class="flex items-center space-x-4">
+          <h3 class="text-xl font-semibold text-gray-800">Une communauté bienveillante</h3>
+        </div>
+        <p class="mt-4 text-gray-600">
+          Évitez l’isolement grâce à des événements, ateliers et conférences qui vous connectent à un réseau enrichissant.
+        </p>
+      </div>
+
+      <!-- Professional Image -->
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <div class="flex items-center space-x-4">
+          <h3 class="text-xl font-semibold text-gray-800">Une image professionnelle</h3>
+        </div>
+        <p class="mt-4 text-gray-600">
+          Impressionnez vos clients avec des salles de réunion modernes et des adresses prestigieuses pour votre domiciliation.
+        </p>
+      </div>
+
+      <!-- Scalability -->
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <div class="flex items-center space-x-4">
+          <h3 class="text-xl font-semibold text-gray-800">Une solution évolutive</h3>
+        </div>
+        <p class="mt-4 text-gray-600">
+          Adaptez vos besoins : passez d’un poste individuel à un bureau privé, idéal pour les entreprises en croissance.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="facilities" class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-8">Pourquoi choisir Workthèque ?</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <!-- Facility Item -->
+      <div class="flex flex-col items-center">
+        <svg class="w-12 h-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h18M9 3v2m6-2v2m3 10h-6m3 0v5m0-5H9m6-2v-2m-3 2h6m0 5v-5M3 10h18m-3 0v2m-3 2h-6m3 0H9m6-2v2m-3-2h-6m0 5H3m0-5h6m0 5v-5" />
+        </svg>
+        <h3 class="font-bold text-lg">Espaces modernes et équipés (Wi-Fi, imprimantes, café à volonté)</h3>
+      </div>
+      <!-- Facility Item -->
+      <div class="flex flex-col items-center">
+        <svg class="w-12 h-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v12m9-12H3m0 0l6 6m0-6l6-6m0 6l6 6" />
+        </svg>
+        <h3 class="font-bold text-lg">Options flexibles : à l'heure, à la journée ou par abonnement</h3>
+      </div>
+      <!-- Facility Item -->
+      <div class="flex flex-col items-center">
+        <svg class="w-12 h-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V5m8 6V5m-8 6h8m-4 6h.01M7 20h10m-5-6v6" />
+        </svg>
+        <h3 class="font-bold text-lg">Un environnement calme et professionnel</h3>
+      </div>
+      <!-- Add additional facilities -->
+      <div class="flex flex-col items-center">
+        <svg class="w-12 h-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m2 9H7m14-5V7a2 2 0 00-2-2H5a2 2 0 00-2 2v9m18 0a2 2 0 11-4 0m-10 0a2 2 0 11-4 0m14 0v1a2 2 0 01-2 2H5a2 2 0 01-2-2v-1m18 0V7a2 2 0 00-2-2H5a2 2 0 00-2 2v9" />
+        </svg>
+        <h3 class="font-bold text-lg">Salles de réunion pour vos projets collaboratifs</h3>
+      </div>
+      <!-- Continue for remaining facilities... -->
+    </div>
+  </div>
+</section>
+
+  <!-- Pricing Plans -->
+  <section id="plans" class="py-16 bg-gray-50">
+
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-8">Nos tarifs :</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8
+      ricing-plan p-6 ">
+
+        <div class="p-6 bg-white rounded shadow-md">
+          <h3 class="text-xl font-bold mb-4 text-primary">Basic</h3>
+          <p class="text-gray-600 mb-6">Perfect for freelancers</p>
+          <p class="text-3xl font-bold line-through text-red-500">10 € par an </p><span class="text-3xl font-bold">Gratuit</span>
+              <div class="plan-item mb-4">
+                <h3 class="font-bold">✓ Bureau individuel</h3>
+                <p>3 € /h</p>
+                <p>8 € / ½ journée </p>
+                <p>16 € / jour</p>
+              </div>
+              <div class="plan-item mb-4">
+                <h3 class="font-bold">✓ Bureau 2-5 personnes</h3>
+                <p>1,5 € /h par personne</p>
+                <p>4 € / ½ journée par personne </p>
+                <p>40 € / jour</p>
+              </div>
+              <div class="plan-item mb-4">
+                <h3 class="font-bold">✓ Open Space</h3>
+                <p>2 € /h</p>
+                <p>7 € / ½ journée </p>
+                <p>15 € / jour</p>
+              </div>
+              <div class="plan-item mb-4">
+                <h3 class="font-bold">✓ Salle de réunion</h3>
+                <p>8 € /h</p>
+                <p>40 € / ½ journée </p>
+                <p>60 € / jour</p>
+              </div>
+
+              <a href="/inscription/" class=" bg-alert text-white py-2 px-4 rounded hover:bg-blue-600">
+                <button class="mt-6 text-white px-4 py-2">Devenir membre</button>
+            </a>
+        </div>
+
+        <div class="p-6 bg-white rounded shadow-md">
+          <h3 class="text-xl font-bold mb-4 text-accent">Premium</h3>
+          <p class="text-gray-600 mb-6">For growing teams</p>
+          <p class="text-3xl font-bold">38 € par an</p>
+              <div class="plan-item mb-4">
+                <h3 class="font-bold">Bureau individuel</h3>
+                <p>1,5 € /h</p>
+                <p>4 € / ½ journée </p>
+                <p>8 € / jour</p>
+              </div>
+              <div class="plan-item mb-4">
+                <h3 class="font-bold">Bureau 2-5 personnes</h3>
+                <p>0,5 € /h par personne</p>
+                <p>2 € / ½ journée par personne </p>
+                <p>20 € / jour</p>
+              </div>
+              <div class="plan-item mb-4">
+                <h3 class="font-bold">Open Space</h3>
+                <p>1 € /h</p>
+                <p>3 € / ½ journée </p>
+                <p>7 € / jour</p>
+              </div>
+              <div class="plan-item mb-4">
+                <h3 class="font-bold">Salle de réunion</h3>
+                <p>4 € /h</p>
+                <p>20 € / ½ journée </p>
+                <p>30 € / jour</p>
+              </div>
+              <a href="/inscription/" class=" bg-alert text-white py-2 px-4 rounded hover:bg-blue-600">
+                <button class="mt-6 text-white px-4 py-2">Devenir membre</button>
+            </a>
+        </div>
+   
+      </div>
+    </div>
+  </section>
+
+
+
+
+  {% endblock %}

@@ -1,0 +1,78 @@
+@startuml
+title Workthèque Class Diagram
+
+class Utilisateur {
+  +id: int
+  +prenom: String
+  +nom: String
+  +email: String
+  +motDePasse: String
+  +statutAbonnement: boolean
+  +telephone: String
+  +role: String <<enum>> // "utilisateur", "admin", "superadmin"
+  +inscription()
+  +connexion()
+  +effectuerReservation()
+}
+
+class EspaceDeTravail {
+  +id: int
+  +nom: String
+  +type: String
+  +capacite: int
+  +disponibilite: boolean
+  +adresse: String
+  +verifierDisponibilite()
+}
+
+class Reservation {
+  +id: int
+  +date: Date
+  +heureDebut: Time
+  +heureFin: Time
+  +statut: String
+  +calculerPrix()
+  +annulerReservation()
+}
+
+class Paiement {
+  +id: int
+  +montant: double
+  +statutPaiement: String
+  +traiterPaiement()
+  +rembourser()
+}
+
+class Tarification {
+  +id: int
+  +espaceDeTravailId: int
+  +duree: String <<enum>> // ex : "heure", "demi_jour", "jour"
+  +prix: double
+  +typeTarification: String <<enum>> // "par salle" ou "par personne"
+}
+
+class MembrePremium {
+  +utilisateurId: int
+  +remise: double // Remise en pourcentage pour les membres premium
+}
+
+class Entreprise {
+  +id: int
+  +nom: String
+  +adresse: String
+  +siret: String // Numéro SIRET de l'entreprise
+  +telephone: String
+}
+
+Utilisateur "1" -- "0..*" Reservation : effectue
+Reservation "1" -- "1" EspaceDeTravail : réserve
+Reservation "1" -- "1" Paiement : a
+EspaceDeTravail "1" -- "0..*" Tarification : a
+Utilisateur "1" -- "0..1" MembrePremium : est
+Utilisateur "1" -- "0..1" Entreprise : appartient
+Entreprise "1" -- "0..*" Utilisateur : emploie
+
+@enduml
+
+
+

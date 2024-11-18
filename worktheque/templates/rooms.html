@@ -1,0 +1,97 @@
+
+{% extends 'wrapper.html' %}
+
+{% block title %}Workthèque - Coworking Space{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+<div class="bg-gray-100 font-sans">
+
+
+  <!-- Search Filters -->
+  <div class="bg-gray-100 py-6">
+    <div class="max-w-7xl mx-auto px-4">
+      <form class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-white shadow-lg p-6 rounded-lg">
+        <!-- Location -->
+        <div>
+          <label for="location" class="block text-gray-700 font-semibold">Localisation</label>
+          <input id="location" type="text" placeholder="Ex. Paris, Lyon" class="w-full mt-2 border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <!-- Price Range -->
+        <div>
+          <label for="price" class="block text-gray-700 font-semibold">Prix (€/jour)</label>
+          <div class="flex items-center mt-2">
+            <input id="price-min" type="number" placeholder="Min" class="w-1/2 mr-2 border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            <input id="price-max" type="number" placeholder="Max" class="w-1/2 ml-2 border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+          </div>
+        </div>
+        <!-- Capacity -->
+        <div>
+          <label for="persons" class="block text-gray-700 font-semibold">Capacité</label>
+          <select id="persons" class="w-full mt-2 border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            <option value="">Choisir...</option>
+            <option value="1-5">1-5 personnes</option>
+            <option value="6-10">6-10 personnes</option>
+            <option value="11-20">11-20 personnes</option>
+            <option value="21+">21+ personnes</option>
+          </select>
+        </div>
+        <!-- Search Button -->
+        <div class="flex items-end">
+          <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700">
+            Rechercher
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+ 
+
+  <!-- Results Section -->
+  <section class="py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Espaces disponibles</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+       {% for workspace in workspaces %}
+
+       
+        <!-- Room Card -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">   
+          {% if workspace.image %}
+            <img src="{{ workspace.image.url }}" alt="Coworking space" class="w-full h-48 object-cover">  
+          {% else %}
+            <img src="https://via.placeholder.com/400x200" alt="Coworking space" class="w-full h-48 object-cover">  
+          {% endif %}
+          <div class="p-4">
+            <h3 class="text-lg font-bold text-gray-800">{{ workspace.name }}</h3>
+            <p class="text-gray-600 mt-2">Type : {{ workspace.type }} </p>
+            <p class="text-gray-600 mt-2">Capacité : {{ workspace.capacity }} personnes</p>
+            <p class="text-gray-600">Prix : {{ workspace.pricePerHour }}/heure</p>
+            <p class="text-gray-600">disponibilités : {% if workspace.availability %} Available {% else %} Not Available {% endif %} </p>
+            <a href="{% url 'workspace_detail' workspace.id %}" >
+              <button class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Voir plus</button>
+          </a>
+          </div>
+        </div>
+      
+
+{% empty %}
+  <p> --- </p>
+{% endfor %}
+     </div>
+    </div>
+  </section>
+
+
+
+</div>
+
+
+  
+{% endblock %}

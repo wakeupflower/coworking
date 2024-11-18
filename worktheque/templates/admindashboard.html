@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@kurkle/color"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">Admin Dashboard</h1>
+      <nav>
+        <ul class="flex space-x-4">
+          <li><a href="#dashboard" class="text-blue-500 hover:underline">Dashboard</a></li>
+          <li><a href="#coworking" class="text-blue-500 hover:underline">Espaces Coworking</a></li>
+          <li><a href="#reservations" class="text-blue-500 hover:underline">Réservations</a></li>
+          <li><a href="#membres" class="text-blue-500 hover:underline">Membres</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 mt-6 space-y-12">
+    
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="bg-white p-6 rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">Dashboard</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Revenu total -->
+        <div class="bg-blue-100 p-4 rounded-lg text-center shadow-sm">
+          <h3 class="text-lg font-medium text-blue-700">Revenu Total</h3>
+          <p class="text-3xl font-bold text-blue-900">12 450€</p>
+        </div>
+        <!-- Revenu cette semaine -->
+        <div class="bg-green-100 p-4 rounded-lg text-center shadow-sm">
+          <h3 class="text-lg font-medium text-green-700">Revenu cette semaine</h3>
+          <p class="text-3xl font-bold text-green-900">1 230€</p>
+        </div>
+        <!-- Diagramme en temps réel -->
+        <div class="bg-white p-4 rounded-lg shadow-lg">
+          <h3 class="text-lg font-medium text-gray-700 mb-2">Revenu hebdomadaire</h3>
+          <canvas id="liveRevenueChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Liste Espaces Coworking -->
+    <section id="coworking" class="bg-white p-6 rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">Espaces de Coworking</h2>
+      <table class="w-full text-left table-auto border-collapse border border-gray-200">
+        <thead class="bg-gray-100 text-gray-700">
+          <tr>
+            <th class="border border-gray-300 px-4 py-2">Nom</th>
+            <th class="border border-gray-300 px-4 py-2">Adresse</th>
+            <th class="border border-gray-300 px-4 py-2">Prix</th>
+            <th class="border border-gray-300 px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Exemple -->
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Espace Moderne</td>
+            <td class="border border-gray-300 px-4 py-2">Paris, France</td>
+            <td class="border border-gray-300 px-4 py-2">50€/jour</td>
+            <td class="border border-gray-300 px-4 py-2">
+              <button class="text-blue-500 hover:underline">Modifier</button>
+              <button class="text-red-500 hover:underline">Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Gestion des Réservations -->
+    <section id="reservations" class="bg-white p-6 rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">Gestion des Réservations</h2>
+      <ul class="space-y-4">
+        <li class="flex justify-between items-center bg-gray-50 p-4 rounded-lg shadow-sm">
+          <p class="text-gray-700">Réservation #123 - Espace Moderne</p>
+          <button class="text-red-500 hover:underline">Annuler</button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Gestion des Membres -->
+    <section id="membres" class="bg-white p-6 rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">Gestion des Membres</h2>
+      <ul class="space-y-4">
+        <li class="flex justify-between items-center bg-gray-50 p-4 rounded-lg shadow-sm">
+          <p class="text-gray-700">John Doe - john@example.com</p>
+          <button class="text-blue-500 hover:underline">Modifier</button>
+          <button class="text-red-500 hover:underline">Supprimer</button>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script>
+    // Configuration du diagramme "wave" en temps réel
+    const ctx = document.getElementById('liveRevenueChart').getContext('2d');
+    const liveRevenueChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          label: 'Revenu',
+          borderColor: '#4caf50',
+          backgroundColor: 'rgba(76, 175, 80, 0.1)',
+          borderWidth: 2,
+          lineTension: 0.3,
+          fill: true,
+          data: []
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'realtime',
+            realtime: {
+              duration: 20000,
+              refresh: 1000,
+              delay: 2000,
+              onRefresh: function(chart) {
+                chart.data.datasets[0].data.push({
+                  x: Date.now(),
+                  y: Math.random() * 100 + 1000 // Exemple dynamique
+                });
+              }
+            }
+          },
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
+

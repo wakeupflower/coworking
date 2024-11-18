@@ -1,0 +1,22 @@
+@startuml
+title Reservation Workflow
+
+actor User
+participant "Web Application" as App
+participant "Workspace Service" as Workspace
+participant "Reservation Service" as Reservation
+participant "Payment Service" as Payment
+
+User -> App: Log in
+App -> User: Login successful
+User -> App: Select Workspace
+App -> Workspace: Check availability
+Workspace --> App: Availability confirmed
+User -> App: Create Reservation
+App -> Reservation: Save reservation details
+Reservation --> App: Reservation saved
+App -> Payment: Process payment
+Payment --> App: Payment successful
+App -> User: Reservation confirmed
+
+@enduml

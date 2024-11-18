@@ -1,0 +1,126 @@
+{% extends 'wrapper.html' %}
+
+{% block title %}account creation{% endblock %}
+
+{% block content %}
+
+
+<!-- Header Section -->
+<section class="bg-blue-600 text-white py-6">
+  <div class="container mx-auto text-center">
+    <h1 class="text-3xl font-bold">Créer un Compte</h1>
+    <p class="mt-2">Rejoignez notre espace de coworking et accédez à des avantages exclusifs.</p>
+  </div>
+</section>
+
+
+<!-- Account Creation Form Section -->
+<section class="flex-grow flex justify-center items-center py-16">
+  <div class="w-full max-w-2xl bg-white shadow-lg rounded-lg p-8">
+    <form action="#" method="POST">
+
+      <!-- Informations Personnelles -->
+      <div class="mb-6">
+        <h2 class="text-xl font-bold mb-4 text-blue-600">Informations Personnelles</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="prenom" class="block text-gray-700 font-semibold">Prénom</label>
+            <input type="text" id="prenom" name="prenom" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          </div>
+          <div>
+            <label for="nom" class="block text-gray-700 font-semibold">Nom</label>
+            <input type="text" id="nom" name="nom" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          </div>
+          <div>
+            <label for="telephone" class="block text-gray-700 font-semibold">Numéro de téléphone</label>
+            <input type="tel" id="telephone" name="telephone" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required="">
+          </div>
+          <div
+            <label for="email" class="block text-gray-700 font-semibold">Adresse e-mail</label>
+            <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Données sur la Facturation / Société -->
+      <div class="mb-6">
+        <h2 class="text-xl font-bold mb-4 text-blue-600">Données sur la Facturation / Société</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="entreprise" class="block text-gray-700 font-semibold">Nom de l'entreprise</label>
+            <input type="text" id="entreprise" name="entreprise" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+          </div>
+          <div >
+            <label for="telephone_entreprise" class="block text-gray-700 font-semibold">Numéro de téléphone</label>
+            <input type="tel" id="telephone_entreprise" name="telephone_entreprise" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required="">
+          </div>
+
+          <div class="col-span-2">
+            <label for="adresse" class="block text-gray-700 font-semibold">Adresse</label>
+            <input type="text" id="adresse" name="adresse" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          </div>
+
+          <div>
+            <label for="ville" class="block text-gray-700 font-semibold">Ville</label>
+            <input type="text" id="ville" name="ville" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          </div>
+          <div>
+            <label for="code_postal" class="block text-gray-700 font-semibold">Code Postal</label>
+            <input type="text" id="code_postal" name="code_postal" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          </div>
+          <!-- New SIREN/SIRET Field -->
+          <div>
+            <label for="siren_siret" class="block text-gray-700 font-semibold">SIREN/SIRET</label>
+            <input type="text" id="siren_siret" name="siren_siret" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: 123 456 789 00012" required="">
+          </div>
+          <!-- New RIB Number Field -->
+          <div>
+            <label for="rib_number" class="block text-gray-700 font-semibold">RIB</label>
+            <input type="text" id="rib_number" name="rib_number" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: FR76 3000 6000 0112 3456 7890 189" required="">
+          </div>
+        </div>
+      </div>
+
+      <!-- Mot de Passe -->
+      <div class="mb-6">
+        <h2 class="text-xl font-bold mb-4 text-blue-600">Mot de Passe</h2>
+        <div>
+          <label for="password" class="block text-gray-700 font-semibold">Mot de passe</label>
+          <input type="password" id="password" name="password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div class="mt-4">
+          <label for="confirm_password" class="block text-gray-700 font-semibold">Confirmer le mot de passe</label>
+          <input type="password" id="confirm_password" name="confirm_password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+      </div>
+
+      <!-- abonnement_premium  -->
+      <div class="mb-6">
+        <h2 class="text-xl font-bold mb-4 text-blue-600">abonnement_premium </h2>
+        <div class="flex items-start">
+          <input type="checkbox" id="abonnement_premium" name="abonnement_premium" class="mr-2">
+          <label for="abonnement_premium" class="text-gray-700">abonnement</label>
+        </div>
+      </div>
+      
+
+      <!-- Conditions Générales -->
+      <div class="mb-6">
+        <h2 class="text-xl font-bold mb-4 text-blue-600">Conditions Générales</h2>
+        <div class="flex items-start">
+          <input type="checkbox" id="conditions" name="conditions" class="mr-2">
+          <label for="conditions" class="text-gray-700">J'accepte les <a href="/cgv" target="_blank" class="text-blue-600 hover:underline">Conditions Générales</a>.</label>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700">Créer un Compte</button>
+      {% csrf_token %}
+    </form>
+  </div>
+</section>
+
+
+
+{% endblock %}
+

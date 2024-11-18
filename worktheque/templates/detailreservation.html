@@ -1,0 +1,122 @@
+{% extends 'wrapper.html' %}
+
+{% block title %}Workthèque - Coworking Space{% endblock %}
+
+{% block content %}
+
+
+<section class="py-8">
+  <div class="max-w-3xl mx-auto px-4">
+    <!-- Breadcrumb -->
+    <nav class="flex text-sm text-gray-600 mb-6" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="/" class="text-blue-600 hover:underline">
+            Accueil
+          </a>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg class="w-4 h-4 mx-2 text-gray-400" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M7.05 2.555a.5.5 0 01.5-.5h4.9a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-4.9a.5.5 0 01-.5-.5v-1z"></path>
+              <path fill-rule="evenodd" d="M1 5a2 2 0 012-2h14a2 2 0 012 2v11a2 2 0 01-2 2H3a2 2 0 01-2-2V5zm2 0v11h14V5H3z" clip-rule="evenodd"></path>
+            </svg>
+            <a href="/myreservation/" class="text-blue-600 hover:underline">
+              Mes Réservations
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg class="w-4 h-4 mx-2 text-gray-400" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M7.05 2.555a.5.5 0 01.5-.5h4.9a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-4.9a.5.5 0 01-.5-.5v-1z"></path>
+              <path fill-rule="evenodd" d="M1 5a2 2 0 012-2h14a2 2 0 012 2v11a2 2 0 01-2 2H3a2 2 0 01-2-2V5zm2 0v11h14V5H3z" clip-rule="evenodd"></path>
+            </svg>
+            <span class="text-gray-500">
+              Détails de la réservation
+            </span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Page Title -->
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Détails de la réservation</h1>
+
+    <!-- Reservation Details -->
+    <div class="bg-white shadow-lg rounded-lg p-6 mx-auto">
+      <!-- Current Time -->
+      <div class="mb-4 text-center">
+        <p class="text-gray-600 font-medium">
+          <strong>Heure actuelle :</strong> <span id="current-time" class="text-blue-600"></span>
+        </p>
+      </div>
+
+      <!-- Reservation Info -->
+      <div class="space-y-4 text-center">
+        <p class="text-gray-700">
+          <strong>Nom de l'espace :</strong> Espace de coworking moderne
+        </p>
+        <p class="text-gray-700">
+          <strong>Date réservée :</strong> 20 novembre 2024
+        </p>
+        <p class="text-gray-700">
+          <strong>Heure réservée :</strong> 10:00 - 18:00
+        </p>
+        <p class="text-gray-700">
+          <strong>Prix total :</strong> 100 €
+        </p>
+      </div>
+
+      <!-- Cancellation Policy -->
+      <div class="mt-6 bg-gray-100 p-4 rounded-lg text-center">
+        <p class="text-gray-800 font-semibold">Conditions d'annulation :</p>
+        <ul class="mt-2 text-gray-600 list-disc pl-6 text-left inline-block">
+          <li>
+            Les annulations faites avant <strong>24 heures ouvrables</strong> seront
+            totalement remboursées.
+          </li>
+          <li>
+            Dépassant ce délai, vous recevrez un <strong>remboursement de 50%</strong>.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Cancel Reservation Button -->
+      <div class="mt-6">
+        <button
+          id="cancel-reservation"
+          class="w-full bg-red-600 text-white font-semibold py-2 rounded-lg hover:bg-red-700"
+        >
+          Annuler la réservation
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Display the current time
+  function updateCurrentTime() {
+    const currentTimeElement = document.getElementById("current-time");
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    currentTimeElement.textContent = now.toLocaleDateString('fr-FR', options);
+  }
+
+  updateCurrentTime();
+
+  // Add event listener for the cancellation button
+  document.getElementById("cancel-reservation").addEventListener("click", function () {
+    const confirmCancel = confirm(
+      "Êtes-vous sûr de vouloir annuler cette réservation ?"
+    );
+    if (confirmCancel) {
+      alert("Votre réservation a été annulée.");
+      // Add logic here to cancel the reservation in your backend (AJAX/Fetch API)
+    }
+  });
+</script>
+
+  
+  {% endblock %}

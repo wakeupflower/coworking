@@ -1,0 +1,43 @@
+{% load static %}
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="{% static 'dist/swiper-bundle.min.css' %}">
+
+
+<!-- customed CSS -->
+<link rel="stylesheet" href="{% static 'dist/styles.css' %}">
+<link rel="stylesheet" href="{% static 'dist/custom.css' %}">
+
+<!-- Swiper JS -->
+<script src="{% static 'dist/swiper-bundle.min.js' %}"></script>
+
+  <!-- Swiper JS Initialization -->
+  <script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    menuToggle.addEventListener('click', function () {
+      menu.classList.toggle('hidden'); // Toggle menu visibility
+    });
+
+      var swiper = new Swiper('.swiper-container', {
+        loop: true,  // Infinite loop mode
+        autoplay: {
+          delay: 4000,  // 3 seconds delay between slides
+          disableOnInteraction: false,  // Keep autoplay after user interaction
+        },
+        speed: 8000,  // Transition speed (in milliseconds), making it slower for a smoother effect
+        //easing: 'ease-in-out',  // Easing function for smoother transitions
+        easing: 'cubic-bezier(0.25, 1, 0.5, 1)', // Very soft, smooth easing
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,  // Allow pagination to be clickable
+        },
+      });
+    });
+  </script>

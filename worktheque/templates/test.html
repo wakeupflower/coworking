@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+    <h1 class="text-2xl font-bold mb-4">Coworking Space Booking</h1>
+    
+    <!-- Booking Form -->
+    <form id="booking-form" class="space-y-4">
+      <!-- Date Picker -->
+      <div>
+        <label for="booking-date" class="block text-sm font-medium text-gray-700">Choose a date</label>
+        <input 
+          type="text" 
+          id="booking-date" 
+          class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+          placeholder="Select a date"
+          required
+        />
+      </div>
+
+      <!-- Time Pickers -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Booking Hours</label>
+        <div class="grid grid-cols-2 gap-4">
+          <!-- From Time -->
+          <div>
+            <label for="time-from" class="text-sm text-gray-500">From</label>
+            <input 
+              type="text" 
+              id="time-from" 
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+              placeholder="Start time"
+              required
+            />
+          </div>
+          <!-- To Time -->
+          <div>
+            <label for="time-to" class="text-sm text-gray-500">To</label>
+            <input 
+              type="text" 
+              id="time-to" 
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+              placeholder="End time"
+              required
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+      >
+        Book Now
+      </button>
+    </form>
+  </div>
+
+  <!-- Flatpickr Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    // Initialize the date picker
+    flatpickr("#booking-date", {
+      enableTime: false,
+      dateFormat: "Y-m-d",
+    });
+
+    // Initialize the time pickers
+    flatpickr("#time-from", {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: "H:i",
+      time_24hr: true,
+    });
+    flatpickr("#time-to", {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: "H:i",
+      time_24hr: true,
+    });
+
+    // Handle form submission
+    document.getElementById('booking-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const date = document.getElementById('booking-date').value;
+      const fromTime = document.getElementById('time-from').value;
+      const toTime = document.getElementById('time-to').value;
+
+      alert(`Booking Details:\nDate: ${date}\nTime: ${fromTime} - ${toTime}`);
+    });
+  </script>
+</body>
+</html>
+

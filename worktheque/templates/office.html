@@ -1,0 +1,82 @@
+{% extends 'wrapper.html' %}
+
+{% block title %}Workthèque - Coworking Space{% endblock %}
+
+{% block content %}
+
+  <!-- Breadcrumb and Title -->
+<section class="bg-gray-100 py-4">
+  <div class="max-w-7xl mx-auto px-4">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a  href="/" class="text-blue-600 hover:underline">Accueil</a> &gt; 
+      <a href="/reservationlist/"  class="text-blue-600 hover:underline">List d'espaces</a> &gt; 
+      <span class="text-gray-700">Détails de la salle</span>
+    </nav>
+    <h1 class="text-3xl font-bold text-gray-800">{{ workspace.name }}</h1>
+  </div>
+</section>
+
+<!-- Room Details -->
+<section class="py-8">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8">
+    <!-- Left Column: Image and Description -->
+    <div>
+      <!-- Large Image -->
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        {% if workspace.image %}
+            <img src="{{ workspace.image.url }}" alt="{{ workspace.name }}" class="w-full h-96 object-cover">
+        {% else %}
+            <img src="https://via.placeholder.com/1200x600" alt="Espace de coworking" class="w-full h-96 object-cover">
+        {% endif %}
+      </div>
+
+      <!-- Room Info -->
+      <div class="mt-6 bg-white shadow-lg rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">{{ workspace.name }}</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Profitez de cet espace de coworking moderne situé au cœur de Paris. Idéal pour les équipes ou les
+          indépendants, cet espace offre des installations haut de gamme, un accès rapide au Wi-Fi et une
+          atmosphère propice à la productivité.
+        </p>
+        <ul class="mt-4 space-y-2">
+          <li class="text-gray-700"><strong>Capacité :</strong> {{ workspace.capacity }} personnes</li>
+          <li class="text-gray-700"><strong>Prix :</strong> {{ workspace.pricePerHour }} €/heure</li>
+          <li class="text-gray-700"><strong>type :</strong> {{ workspace.type }}</li>
+          <li class="text-gray-700"><strong>Emplacement :</strong> Paris, France</li>
+          <li class="text-gray-700"><<p>Availability: {% if workspace.availability %} Available {% else %} Not Available {% endif %}</p></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Column: Date and Hour Availability -->
+    <div>
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Vérifiez la disponibilité</h3>
+        <!-- Availability Calendar -->
+        <div class="mb-6">
+          <label for="date" class="block text-gray-700 font-semibold">Sélectionnez une date</label>
+          <input id="date" type="date" class="w-full mt-2 border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <div class="mb-6">
+          <label for="time" class="block text-gray-700 font-semibold">Sélectionnez une heure</label>
+          <select id="time" class="w-full mt-2 border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            <option value="">Choisir une heure...</option>
+            <option value="08:00">08:00</option>
+            <option value="10:00">10:00</option>
+            <option value="12:00">12:00</option>
+            <option value="14:00">14:00</option>
+            <option value="16:00">16:00</option>
+            <option value="18:00">18:00</option>
+          </select>
+        </div>
+        <!-- Reservation Button -->
+        <button class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700">
+          Réserver maintenant
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  {% endblock %}

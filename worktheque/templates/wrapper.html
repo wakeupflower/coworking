@@ -1,0 +1,27 @@
+<!-- templates/wrapper.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% include 'head.html' %}
+
+</head>
+<body class="font-sans text-gray-800">
+   
+    {% include 'header.html' %}
+    
+    <!-- Content that changes based on the page -->
+
+        {% block content %}
+            <!-- Default content if no page is specified -->
+            <p>Welcome to the Domino Game! Please choose a page.</p>
+        {% endblock %}
+ 
+
+    {% include 'footer.html' %}
+
+</body>
+</html>
